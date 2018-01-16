@@ -4,8 +4,8 @@
   "description": "",
   "main": "generate-exam.js",
   "scripts": {
-    "build": "tsc generate-exam.ts && chmod +x generate-exam.js",
-    "start": "npm run build && node generate-exam.js",
+    "build": "tsc && chmod +x build/generate-exam.js",
+    "start": "npm run build && node build/generate-exam.js",
     "test": "tsc && ava ./build/test/"
   },
   "keywords": [],

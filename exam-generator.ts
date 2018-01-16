@@ -20,12 +20,10 @@ export default class ExamGenerator {
   produceExam () {
     const title = `${ADocStyles.heading1} ${this._questionsFile.title}`
     const description = `${this._questionsFile.description}`
-    const assignments = this._adoc.convert(
-      this._questionsFile.assignments
+    const assignments = this._questionsFile.assignments
         .map((as) => this.asciifyAssignment(as))
         .join('')
-    )
-    return [title, description, assignments].join('\n')
+    return [title, description, assignments].join('\n\n')
   }
 
   randomAssignment ():IAssignment {
