@@ -1,0 +1,51 @@
+{
+  "title": "Cow Time 101",
+  "description": "This is a test about cow time.",
+  "categories": [
+    {"topic": "cow", "percentage": 50},
+    {"topic":"time", "percentage": 50}
+  ],
+  "assignments" :[
+  {
+    "question": "What is the best time to milk a cow?",
+    "answers": [
+      {
+        "content": "7 o' clock in the AM",
+        "correct": true
+      },
+      {
+        "content": "3 o' clock in the PM",
+        "correct": false
+      },
+      {
+        "content": "7 o' clock in the PM"
+      },
+      {
+        "content": "3 o' clock in the PM"
+      }
+    ],
+    "type": "multiple-choice"
+  },
+  {
+    "question": "What is the average height of a cow?",
+    "answers": [
+      {
+        "content": "5 to 6 feet",
+        "correct": true
+      },
+      {
+        "content": "1.5 to 2 meters",
+        "correct": true
+      },
+      {
+        "content": "10 centimeters",
+        "correct": false
+      },
+      {
+        "content": "A cow can grow up to 1.2 meters",
+        "correct": false
+      }
+    ],
+    "type": "true-false"
+  }
+]}

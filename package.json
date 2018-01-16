@@ -1,0 +1,26 @@
+{
+  "name": "toetsen-maken",
+  "version": "1.0.0",
+  "description": "",
+  "main": "generate-exam.js",
+  "scripts": {
+    "build": "tsc generate-exam.ts && chmod +x generate-exam.js",
+    "start": "npm run build && node generate-exam.js",
+    "test": "tsc && ava ./build/test/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "asciidoctor.js": "^1.5.6-preview.4",
+    "sequelize": "^4.31.2",
+    "sqlite3": "^3.1.13",
+    "typescript": "^2.6.2",
+    "yargs": "^10.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^9.3.0",
+    "@types/yargs": "^10.0.1",
+    "ava": "^0.24.0"
+  }
+}
