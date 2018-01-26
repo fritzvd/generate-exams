@@ -19,6 +19,7 @@ test('returns a random assignment', t => {
 
 test('makes asciidoc out of an assignment', t => {
   const mock:IAssignment = {
+    categoryId: 0,
     answers: [{
       content: 'Answer',
       correct: false

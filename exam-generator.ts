@@ -1,5 +1,3 @@
-import * as ADoc from 'asciidoctor.js'
-
 import { IQuestionsFile, IAssignment, IAnswer } from './interfaces'
 import shuffle from './shuffle'
 import ADocStyles from './adoc-styles'
@@ -14,16 +12,25 @@ export default class ExamGenerator {
 
   constructor (filename:string) {
     this._questionsFile = require(filename)
-    this._adoc = new ADoc
   }
 
   produceExam () {
     const title = `${ADocStyles.heading1} ${this._questionsFile.title}`
     const description = `${this._questionsFile.description}`
+    const categoriesAssignments = this._questionsFile.categories
+      .map((c) => {
+        const as = this._questionsFile.assignments
+          .filter(a => c.categoryId === a.categoryId)
+          .map(a => this.asciifyAssignment(a))
+          .join('\n\n')
+
+        const title = `\n\n${ADocStyles.heading2} ${c.topic}`
+        return [title, as].join('\n\n')
+      })
+    // unordered questions at the end.
     const assignments = this._questionsFile.assignments
-        .map((as) => this.asciifyAssignment(as))
-        .join('')
-    return [title, description, assignments].join('\n\n')
+        .filter((as) => !as.categoryId)
+    return [title, description, categoriesAssignments, assignments].join('\n\n')
   }
 
   randomAssignment ():IAssignment {
@@ -42,6 +49,9 @@ export default class ExamGenerator {
       case AssignmentType.TRUE_FALSE:
         adAnswers = this.multipleChoiceFormat(answers)    
       break
+      case AssignmentType.AOTA:
+        adAnswers = this.allOfTheAbove(answers)
+      break
       default:
         adAnswers = `'''\n'''`
       break
@@ -52,6 +62,13 @@ export default class ExamGenerator {
   multipleChoiceFormat(answers:IAnswer[]):string {
     let formatted = answers.map(
       (a, i) => `. ${a.content}\n`)
+    return `${ADocStyles.olua}\n${formatted.join('')}\n`;
+  }
+
+  allOfTheAbove(answers:IAnswer[]):string {
+    let formatted = answers
+      .sort(a => (a.aota) ? 1 : -1)
+      .map((a, i) => `. ${a.content}\n`)
     return `${ADocStyles.olua}\n${formatted.join('')}\n`;
   }
   

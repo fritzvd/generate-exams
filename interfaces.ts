@@ -1,3 +1,5 @@
+import { AssignmentType } from './assignment-types'
+
 export interface IQuestionsFile {
   title:string
   description:string,
@@ -8,10 +10,13 @@ export interface IQuestionsFile {
 export interface ICategory {
   topic:string,
   percentage:number
+  categoryId:number
 }
 
 export interface IAssignment {
-  type: string
+  categoryId:number
+  extra_content?: IExtraContent
+  type: AssignmentType
   answers: IAnswer[]
   question: string
 }
@@ -19,4 +24,11 @@ export interface IAssignment {
 export interface IAnswer {
   content: string
   correct?: boolean
+  aota?:boolean
+}
+
+export interface IExtraContent {
+  type:string
+  format:string
+  content:string
 }
