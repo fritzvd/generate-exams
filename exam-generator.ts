@@ -3,7 +3,8 @@ import shuffle from './shuffle'
 import ADocStyles from './adoc-styles'
 import { AssignmentType } from './assignment-types'
 
-const ALPHABET_START = 65;
+const ALPHABET_START = 65
+const CODE = 'code'
 
 export default class ExamGenerator {
 
@@ -30,16 +31,31 @@ export default class ExamGenerator {
     // unordered questions at the end.
     const assignments = this._questionsFile.assignments
         .filter((as) => !as.categoryId)
+
+
     return [title, description, categoriesAssignments, assignments].join('\n\n')
   }
 
   randomAssignment ():IAssignment {
-    return this._questionsFile.assignments[Math.floor(Math.random() * this._questionsFile.assignments.length)]
+    return this._questionsFile.assignments[Math.floor(Math.random() *       this._questionsFile.assignments.length)]
   }
 
   asciifyAssignment (assignment:IAssignment) {
     const answers:IAnswer[] = shuffle(assignment.answers)
     let adQuestion:string = `${ADocStyles.heading3} ${assignment.question}\n`
+
+    if (assignment.extra_content &&
+        assignment.extra_content.type === CODE) {
+          let extraContent = [
+            `[source,${assignment.extra_content.format}`,
+            assignment.extra_content.content
+          ].join('\n---\n')
+      adQuestion = [
+        adQuestion,
+        extraContent
+      ].join('\n')
+    }
+
     let adAnswers:string = ''
 
     switch (assignment.type) {
