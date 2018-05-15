@@ -2,11 +2,12 @@
   "title": "Cow Time 101",
   "description": "This is a test about cow time.",
   "categories": [
-    {"topic": "cow", "percentage": 50},
-    {"topic":"time", "percentage": 50}
+    {"topic": "cow", "percentage": 50, "categoryId": 0},
+    {"topic":"time", "percentage": 50, "categoryId": 1}
   ],
   "assignments" :[
   {
+    "categoryId": 1,
     "question": "What is the best time to milk a cow?",
     "answers": [
       {
@@ -28,6 +29,33 @@
   },
   {
     "question": "What is the average height of a cow?",
+    "answers": [
+      {
+        "content": "5 to 6 feet",
+        "correct": true
+      },
+      {
+        "content": "1.5 to 2 meters",
+        "correct": true
+      },
+      {
+        "content": "10 centimeters",
+        "correct": false
+      },
+      {
+        "content": "A cow can grow up to 1.2 meters",
+        "correct": false
+      }
+    ],
+    "type": "true-false"
+  },
+  {
+    "question": "What is the average height of a cow?",
+    "extra_content": {
+      "type": "code",
+      "format": "HTML",
+      "content": "<input type=\"checkbox\" checked class=\"error\">Check it out!</input>"
+    },
     "answers": [
       {
         "content": "5 to 6 feet",

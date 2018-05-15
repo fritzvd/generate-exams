@@ -1,10 +1,9 @@
-import { IQuestionsFile, IAssignment, IAnswer } from './interfaces'
+import { IQuestionsFile, IAssignment, IAnswer, IExtraContent } from './interfaces'
 import shuffle from './shuffle'
 import ADocStyles from './adoc-styles'
 import { AssignmentType } from './assignment-types'
 
 const ALPHABET_START = 65
-const CODE = 'code'
 
 export default class ExamGenerator {
 
@@ -26,18 +25,29 @@ export default class ExamGenerator {
           .join('\n\n')
 
         const title = `\n\n${ADocStyles.heading2} ${c.topic}`
+
         return [title, as].join('\n\n')
       })
     // unordered questions at the end.
     const assignments = this._questionsFile.assignments
         .filter((as) => !as.categoryId)
-
-
+        .map(a => this.asciifyAssignment(a))
+        .join('\n\n')
+    
     return [title, description, categoriesAssignments, assignments].join('\n\n')
   }
 
   randomAssignment ():IAssignment {
-    return this._questionsFile.assignments[Math.floor(Math.random() *       this._questionsFile.assignments.length)]
+    return this._questionsFile
+            .assignments[Math.floor(Math.random() *       this._questionsFile.assignments.length)]
+  }
+
+  renderExtraContent (extraContent:IExtraContent) {    
+    const format = `${extraContent.format}`;
+    return [
+      `[source, ${(format === "SASS") ? "CSS" : format}]`,
+      extraContent.content
+    ].join(ADocStyles.codeDelimiter) + ADocStyles.codeDelimiter
   }
 
   asciifyAssignment (assignment:IAssignment) {
@@ -45,14 +55,11 @@ export default class ExamGenerator {
     let adQuestion:string = `${ADocStyles.heading3} ${assignment.question}\n`
 
     if (assignment.extra_content &&
-        assignment.extra_content.type === CODE) {
-          let extraContent = [
-            `[source,${assignment.extra_content.format}`,
-            assignment.extra_content.content
-          ].join('\n---\n')
+        assignment.extra_content.type === AssignmentType.CODE) {
+      
       adQuestion = [
         adQuestion,
-        extraContent
+        this.renderExtraContent(assignment.extra_content)
       ].join('\n')
     }
 

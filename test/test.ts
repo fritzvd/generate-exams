@@ -2,19 +2,21 @@ import test from 'ava'
 import ExamGenerator from '../exam-generator'
 import { AssignmentType } from '../assignment-types'
 import { IAssignment, IAnswer } from '../interfaces';
+import * as Asciidoctor from 'asciidoctor.js'
 
 const eg = new ExamGenerator(`${__dirname}/../../example/example.json`)
 
 test('produces an exam', t => {
+  let as = new Asciidoctor()
   let asciidoc = eg.produceExam()
-  t.true(asciidoc.endsWith('</div>'))
+  t.true(as.convert(asciidoc).endsWith('</div>'))
 })
 
 test('returns a random assignment', t => {
   let rA1 = eg.randomAssignment()
   let rA2 = eg.randomAssignment()
-
-  t.deepEqual(Object.keys(rA1), Object.keys(rA2))
+  
+  t.notDeepEqual(rA1, rA2)
 })
 
 test('makes asciidoc out of an assignment', t => {
