@@ -1,0 +1,545 @@
+= TheorieToets DT - Develop a Hybrid App (MAD)
+
+_Donderdag 16 januari 2018_ (Max. 12 fouten voor een voldoende (5,5))
+
+
+
+== Het Mobiele Landschap
+
+=== Wat is het verschil tussen native apps en cross platform apps?
+
+[upperalpha]
+. Cross platform app werkt met een webview, native apps niet.
+. Cross platform app heeft doorgaans betere performance
+. Cross platform app en native apps zijn één en hetzelfde.
+. Cross platform app ondersteunt meerdere platform, native is single platform.
+
+
+
+=== Wat is het verschil tussen een native app en een hybrid app?
+
+[upperalpha]
+. Native app ziet er op elk OS hetzelfde uit, hybrid app niet.
+. Een native app performed meestal beter dan een hybrid app.
+. Native app gebruikt retina display, hybrid app relatieve pixels.
+. Een native app schrijf je in binary, een hybrid app heeft tekst format.
+
+
+
+=== Is het veilig om secret keys (bv. een API key) op te slaan in de code van een hybrid app?
+
+[upperalpha]
+. Ja, mits je geen gebruikers wachtwoorden opslaat.
+. Nee.
+. Nee, tenzij je alleen naar iOS oplevert.
+. Ja, mits je alle broncode obfusceert naar een enkel binair bestand en sourcemaps uitzet.
+
+
+
+=== Wat is het verschil tussen een progressive web app (PWA) en een (mobiele) website?
+
+[upperalpha]
+. Ja, mits je alle broncode obfusceert naar een enkel binair bestand en sourcemaps uitzet.
+. Ja, mits je geen gebruikers wachtwoorden opslaat.
+. Nee.
+. Nee, tenzij je alleen naar iOS oplevert.
+
+,
+
+== De Ionic 'Stack
+
+=== Met welke versie van Angular werkt Ionic 3?
+
+[upperalpha]
+. Angular 1.x
+. AngularJS
+. Angular 5
+. Al bovenstaande
+
+
+
+=== Van welk onderliggende *taal/talen* maakt Ionic gebruik?
+
+[upperalpha]
+. Bootstrap
+. Cordova
+. Typescript
+. Al bovenstaande
+
+
+
+=== In welke taal stel je de views/templates op in Ionic?
+
+[upperalpha]
+. HTML
+. Gulp
+. JSX
+. Al bovenstaande
+
+
+
+=== Welke taal in de 'Ionic Stack' is een superset van CSS?
+
+[upperalpha]
+. CoffeeScript
+. SASS
+. LESS
+. Al bovenstaande
+
+
+
+=== Naar welke EcmaScript versie compileert een Ionic app?
+
+[upperalpha]
+. ES5
+. ES3
+. ES6
+. Al bovenstaande, dit kun je instellen
+
+,
+
+== HTML, CSS en SASS
+
+=== Welke regel CSS heeft de hoogste 'specificiteit' voor deze HTML?
+
+[source, HTML]
+---------------------------------------------------------------------------------------------------
+  <input type="checkbox" checked class="error">Check it out!</input>
+---------------------------------------------------------------------------------------------------
+  
+[upperalpha]
+. `input.error { color: orange; }`
+. `.error { color: yellow !important; }`
+. `input { color: red; }`
+. `input.error:checked { color: green; }`
+
+
+
+=== Ondersteunt CSS3 ook animaties?
+
+[upperalpha]
+. Ja, maar alleen op iOS.
+. Nee, dat moet met JavaScript (Web Animation).
+. Ja, transities en transforms.
+. Nee, dat moet met HTML.
+
+
+
+=== Welk HTML attribuut kun je gebruiken om styles direct op een element te definieren?
+
+[upperalpha]
+. `css`
+. `style`
+. `link`
+. Geen van de genoemde.
+
+
+
+=== Met welke syntax selecteer je een input met de CSS class 'submitted'?
+
+[upperalpha]
+. `input > submitted`
+. `input[submitted]`
+.  `input:submitted`
+. `input.submitted`
+
+
+
+=== Wat is een geldig HTML attribuut van de <input> tag?
+
+[upperalpha]
+. `alt`
+. `disabled`
+. `[onClick]`
+. Geen van de genoemde.
+
+
+
+=== Welk stukje van deze CSS is een 'CSS selector'?
+
+[source, CSS]
+---------------------------------------------------------------------------------------------------
+  * {
+	background-color: #ff0000;
+}
+---------------------------------------------------------------------------------------------------
+  
+[upperalpha]
+. `*`
+. `#ff0000`
+. `background-color`
+. Geen van de genoemde.
+
+
+
+=== Hoe selecteer je in CSS deze submit button?
+
+[source, HTML]
+---------------------------------------------------------------------------------------------------
+  <button type="submit">Don't push me!</span>
+---------------------------------------------------------------------------------------------------
+  
+[upperalpha]
+. `button#type=submit`
+.  `button.type=submit`
+. `button[type=submit]`
+. Geen van de genoemde.
+
+
+
+=== Met welke syntax selecteer je het element met id 'nice'?
+
+[source, HTML]
+---------------------------------------------------------------------------------------------------
+  <div id="nice">Hybrid Mobile Appz!</div>
+---------------------------------------------------------------------------------------------------
+  
+[upperalpha]
+. `@nice`
+. `#nice`
+. `.nice`
+. Geen van de genoemde opties.
+
+
+
+=== Welke van de volgende stukjes CSS heeft de hoogste 'specificity'
+
+[upperalpha]
+. `header`
+. `header p span`
+. `header p`
+. Ze zijn alledrie even specifiek
+
+
+
+=== Wat is de default waarde van de `display` property van een `<span>`?
+
+[upperalpha]
+. `inline-block`
+. `block`
+. `flex`
+. `inline`
+
+
+
+=== Boxmodel: Met welke property stel je de ruimte in die tekst heeft t.o.v. van de eigen border?
+
+[upperalpha]
+. `margin`
+. `width`
+. `padding`
+. `content`
+
+
+
+=== Welk van de volgende is een geldige SASS variabele?
+
+[upperalpha]
+. `.kleur`
+. `$kleur`
+. `kleur`
+. `Je kunt geen variabelen gebruiken in SASS`
+
+
+
+=== Wat is het verschil tussen @import in SASS en CSS?
+
+[upperalpha]
+. Voor een SASS @import is geen extra HTTP request nodig.
+. Een SASS @import kan zowel een .css als een .scss bestand importeren.
+. Bij SASS @import hoef je de extensie niet op te geven.
+. `Al bovenstaande.`
+
+
+
+=== Op welk element of welke elementen wordt onderstaande padding van 10px toegepast?
+
+[source, CSS]
+---------------------------------------------------------------------------------------------------
+  *, nav {
+	border: 10px;
+	ul {
+		margin: 0;
+		padding: 10px;
+	}
+}
+---------------------------------------------------------------------------------------------------
+  
+[upperalpha]
+. nav
+. ul
+. *
+. `Je kunt geen variabelen gebruiken in SASS`
+
+,
+
+== JavaScript en EcmaScript
+
+=== Wat wordt hier gedeclareerd?
+
+[source, javascript]
+---------------------------------------------------------------------------------------------------
+  var a = '';
+---------------------------------------------------------------------------------------------------
+  
+[upperalpha]
+. een object
+. een lege lijst
+. een string
+. een array
+
+
+
+=== Kun je in ES6 altijd '`let`' gebruiken in plaats van var?
+
+[upperalpha]
+. Ja.
+. Ja, tenzij je lexical scoping wilt gebruiken.
+. Ja, tenzij je een closure wilt maken.
+. Ja, tenzij je een constante wilt definieren.
+
+
+
+=== Kun je in JavaScript een functie aanroepen voordat je hem gedefinieerd hebt?
+
+[upperalpha]
+. Ja, mits je dit in een IIFE zet.
+. Ja, dankzij hoisting.
+. Nee.
+. Ja, tenzij je in strict mode zit.
+
+
+
+=== Hoe definieer je een lambda in ES6?
+
+[upperalpha]
+. `let square = a => a*a;`
+. `function a => return a*a;`
+. `let square(a) => a*a;`
+. `let (square) => a*a;`
+
+
+
+=== Wat is GEEN JavaScript primitive type?
+
+[upperalpha]
+. `Date`
+. `string`
+. `boolean`
+. `number`
+
+
+
+=== Wat is een callback?
+
+[upperalpha]
+. Dit is een asynchrone waarde die iets oplevert of een exceptie gooit.
+. Dit is een functie in een extern framework.
+. Dit is een functie die zichzelf aanroept.
+. Dit is een functie die je meegeeft als parameter en door andere functie evt. wordt  aangeroepen.
+
+
+
+=== Wat gebeurt als je deze code uitvoert?
+
+[source, javascript]
+---------------------------------------------------------------------------------------------------
+  var klas = {
+	naam: "M-MAD sep",
+	nummer: "C209",
+	docent: `wlb`,
+	owe: 'dha',
+	minor: true,
+	students: []
+}
+les = klas
+delete les.naam
+les.docent = `dvtrf`
+console.log(klas.docent)
+---------------------------------------------------------------------------------------------------
+  
+[upperalpha]
+.  Dit logt `wlb`.
+. Dit geeft: `TypeError: Cannot set property 'docent' of undefined` op regel 12.
+. Dit geeft: `ReferenceError: les is not defined` op regel 10.
+. Dit logt `dvtrf`.
+
+
+
+=== Wat krijg je als je de code in strict mode zet?
+
+[source, javascript]
+---------------------------------------------------------------------------------------------------
+  var klas = {
+	naam: "M-MAD sep",
+	nummer: "C209",
+	docent: `wlb`,
+	owe: 'dha',
+	minor: true,
+	students: []
+}
+les = klas
+delete les.naam
+les.docent = `dvtrf`
+console.log(klas.docent)
+---------------------------------------------------------------------------------------------------
+  
+[upperalpha]
+. Dit geeft: `ReferenceError: les is not defined` op regel 10.
+. Dit logt `dvtrf`.
+. Dit geeft: `TypeError: Cannot set property 'docent' of undefined` op regel 12.
+.  Dit logt `wlb`.
+
+
+
+=== Wat kun je doen met code om de global scope niet te vervuilen?
+
+[upperalpha]
+. De code in strict mode zetten met `"strict mode";`.
+. Een IIFE om het blok zetten. Dat wil zeggen, een regel '`function() {`' ervoor en '`}());`' erachter.
+. De code in strict mode zetten met `"mode strict"`..
+. Een IIFE om het blok zetten. Dat wil zeggen, een regel '`(function() {`' ervoor en '`})();`' erachter.
+
+,
+
+== TypeScript
+
+=== Wat gebeurt er met interface delaraties bij transpilatie van TypeScript naar JavaScript?
+
+[source, javascript]
+---------------------------------------------------------------------------------------------------
+  interface Point {
+ readonly x:number;
+ readonly y:number;
+}
+---------------------------------------------------------------------------------------------------
+  
+[upperalpha]
+. Wordt omgezet naar `class` es
+. Dat is afhankelijk van instelling in de configuratie
+. Er blijft niks van over
+. Wordt omgezet naar `typeof` checks
+
+
+
+=== Kun je TypeScript code direct debuggen in de browser?
+
+[upperalpha]
+. Ja, mits er een .map file is
+. Alleen als je naar ES2016 transpileert
+. Ja, Chrome begrijp TypeScript
+. Nee, je debugt JavaScript code
+
+
+
+=== Wat is de juiste syntax om een een subklasse `Cat` van klasse `Animal` in TypeScript te defineren?
+
+[upperalpha]
+. `Cat extends Animal`
+. `Animal: Cat`
+. `Cat: Animal`
+. `Cat implements Animal`
+
+
+
+=== In welk bestand kun je extra checks instellen voor TypeScript code?
+sZoals dat je NIET het `any` type mag gebruiken.
+
+[upperalpha]
+. `tslint.json`
+. `ionic.config.json`
+. `package.json`
+. `tsconfig.json`
+
+
+
+=== In welk bestand in een Ionic app geef je de ECMAScript versie op waar Ionic naar transpileert?
+
+[upperalpha]
+. `tsconfig.json`
+. `ionic.config.json`
+. `package.json`
+. `config.xml`
+
+
+
+=== In welk bestand in een Ionic app geef je de ECMAScript versie op waar Ionic naar transpileert?
+
+[upperalpha]
+. `ionic.config.json`
+. `package.json`
+. `tsconfig.json`
+. `config.xml`
+
+,
+
+== Cordova/Ionic Native
+
+=== Wat is Cordova?
+
+[upperalpha]
+. Een Cloud platform met native controls voor je Hybrid app.
+. Een cross platform manier om HTML voor een specifiek OS te genereren.
+. Een open source framework met JavaScript wrappers van native sensors.
+. Een manier om met Ionic een cross platform app te maken.
+
+
+
+=== Welk van de volgende sensors kun je benaderen via Ionic Native?
+
+[upperalpha]
+. Bluetooth
+. de Camera
+. GPS
+. Al bovenstaande.
+
+
+
+=== Wat is het verschil tussen native apps en cross platform apps?
+
+[upperalpha]
+. Cross platform app werkt met een webview, native apps niet.
+. Cross platform app heeft doorgaans betere performance
+. Cross platform app ondersteunt meerdere platform, native is single platform.
+. Cross platform app en native apps zijn één en hetzelfde.
+
+
+
+=== Wat is het verschil tussen een cross platform app en een hybrid app?
+
+[upperalpha]
+. Cross platform werkt op tablet en mobiel, hybrid app niet.
+. Cross platform app compileert naar native controls, hybrid app runt een JavaScript parser en HTML en CSS renderers.
+. Cross platform app kan alle native sensors benaderen, hybrid app alleen sensors die JavaScript begrijpen.
+. Cross platform app vereist dure commerciele IDE's, hybrid is open source en gratis.
+
+
+
+=== Wat is het verschil tussen een native app en een hybrid app?
+
+[upperalpha]
+. Een native app performed meestal beter dan een hybrid app.
+. Native app gebruikt retina display, hybrid app relatieve pixels.
+. Een native app schrijf je in binary, een hybrid app heeft tekst format.
+. Native app ziet er op elk OS hetzelfde uit, hybrid app niet.
+
+
+
+=== Is het veilig om secret keys (bv. een API key) op te slaan in de code van een hybrid app?
+
+[upperalpha]
+. Ja, mits je geen gebruikers wachtwoorden opslaat.
+. Nee, tenzij je alleen naar iOS oplevert.
+. Nee.
+. Ja, mits je alle broncode obfusceert naar een enkel binair bestand en sourcemaps uitzet.
+
+
+
+=== Wat is het verschil tussen een progressive web app (PWA) en een (mobiele) website?
+
+[upperalpha]
+. Ja, mits je alle broncode obfusceert naar een enkel binair bestand en sourcemaps uitzet.
+. Nee.
+. Ja, mits je geen gebruikers wachtwoorden opslaat.
+. Nee, tenzij je alleen naar iOS oplevert.
+
