@@ -6,6 +6,7 @@ import { AssignmentType } from './assignment-types'
 const ALPHABET_START = 65
 
 export default class ExamGenerator {
+  private questionNumber = 1
 
   private _questionsFile:IQuestionsFile
   private _adoc:any
@@ -15,7 +16,11 @@ export default class ExamGenerator {
   }
 
   produceExam () {
+    let qNr = 1
     const title = `${ADocStyles.heading1} ${this._questionsFile.title}`
+    const syntaxHighlight = `
+:source-highlighter: pygments
+:pygments-style: emacs`
     const description = `${this._questionsFile.description}`
     const categoriesAssignments = this._questionsFile.categories
       .map((c) => {
@@ -34,12 +39,16 @@ export default class ExamGenerator {
         .map(a => this.asciifyAssignment(a))
         .join('\n\n')
     
-    return [title, description, categoriesAssignments, assignments].join('\n\n')
+    return [title, syntaxHighlight, description, categoriesAssignments, assignments].join('\n\n')
   }
 
+  /**
+   * return random assignment, remove returned assignment from possible assignments.
+   */
   randomAssignment ():IAssignment {
     return this._questionsFile
-            .assignments[Math.floor(Math.random() *       this._questionsFile.assignments.length)]
+            .assignments.splice(Math.floor(Math.random() * 
+              this._questionsFile.assignments.length), 1)[0]
   }
 
   renderExtraContent (extraContent:IExtraContent) {    
@@ -52,7 +61,7 @@ export default class ExamGenerator {
 
   asciifyAssignment (assignment:IAssignment) {
     const answers:IAnswer[] = shuffle(assignment.answers)
-    let adQuestion:string = `${ADocStyles.heading3} ${assignment.question}\n`
+    let adQuestion:string = `${ADocStyles.heading3} ${this.questionNumber}. ${assignment.question}\n`
 
     if (assignment.extra_content &&
         assignment.extra_content.type === AssignmentType.CODE) {
@@ -79,6 +88,9 @@ export default class ExamGenerator {
         adAnswers = `'''\n'''`
       break
     }
+
+    this.questionNumber++
+
     return `${adQuestion}\n${adAnswers}`
   }
 

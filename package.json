@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc && chmod +x build/generate-exam.js",
     "start": "npm run build && node build/generate-exam.js",
+    "database": "npm run build && node build/database-exam.js",
     "test": "tsc && ava ./build/test/"
   },
   "keywords": [],
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@types/node": "^9.3.0",
     "@types/yargs": "^10.0.1",
-    "ava": "^0.24.0"
+    "ava": "^0.24.0",
+    "sqlite": "^2.9.2"
   }
 }
